@@ -1,5 +1,36 @@
+<<<<<<< HEAD
 *.o
 parser.cpp
 parser.hpp
 tokens.cpp
 parser
+=======
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+>>>>>>> e68af57bcd2a4efe5b9756823dbb1a69fcd0f807
