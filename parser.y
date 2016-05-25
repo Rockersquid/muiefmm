@@ -26,7 +26,7 @@
    match our tokens.l lex file. We also define the node type
    they represent.
  */
-%token <string> TIDENTIFIER TINTEGER TDOUBLE
+%token <string> TIDENTIFIER TINTEGER TDOUBLE TSTRING
 %token <token> TCEQ TCNE TCLT TCLE TCGT TCGE TEQUAL
 %token <token> TLPAREN TRPAREN TLBRACE TRBRACE TCOMMA TDOT
 %token <token> TPLUS TMINUS TMUL TDIV
@@ -91,6 +91,7 @@ ident : TIDENTIFIER { $$ = new NIdentifier(*$1); delete $1; }
 
 numeric : TINTEGER { $$ = new NInteger(atol($1->c_str())); delete $1; }
 		| TDOUBLE { $$ = new NDouble(atof($1->c_str())); delete $1; }
+		| TSTRING {$$ = new NString(*$1); delete $1; }
 		;
 	
 expr : ident TEQUAL expr { $$ = new NAssignment(*$<ident>1, *$3); }

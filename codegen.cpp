@@ -50,6 +50,9 @@ static Type *typeOf(const NIdentifier& type)
 	else if (type.name.compare("double") == 0) {
 		return Type::getDoubleTy(getGlobalContext());
 	}
+	else if (type.name.compare("string") == 0) {
+		return ArrayType::get(Type::getInt64Ty(getGlobalContext()), uint64_t(100));
+	}
 	return Type::getVoidTy(getGlobalContext());
 }
 
@@ -66,6 +69,12 @@ Value* NDouble::codeGen(CodeGenContext& context)
 	std::cout << "Creating double: " << value << endl;
 	return ConstantFP::get(Type::getDoubleTy(getGlobalContext()), value);
 }
+
+Value* NString::codeGen(CodeGenContext& context)
+ {
+ 	std::cout << "Creating string: " << value << endl;
+	return ConstantDataArray::getString(getGlobalContext(), value, true);
+ }
 
 Value* NIdentifier::codeGen(CodeGenContext& context)
 {
